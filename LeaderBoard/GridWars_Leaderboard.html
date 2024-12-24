@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            background: url('./background.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #00FF41;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .leaderboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 80%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .leaderboard div {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #00FF41;
+            background: rgba(0, 255, 65, 0.1);
+        }
+        .leaderboard div:nth-child(even) {
+            background: rgba(0, 255, 65, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Leaderboard</h1>
+    <div class="leaderboard" id="leaderboard">
+        <!-- Data will be inserted here dynamically -->
+    </div>
+
+    <script>
+        const sheetId = "1ZMhtXcN04FMyWJWpJse5keXxMiE9w4_mGC3zzipn2Ts";
+        const range = "A2:D11";
+        const apiKey = "AIzaSyCoMEnXaPU4tTnpVlkreKWxDiPoAzn1Rm8"; // Your API Key
+
+        async function fetchData() {
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.values;
+        }
+
+        function populateLeaderboard(data) {
+            const container = document.getElementById('leaderboard');
+            data.forEach(row => {
+                row.forEach(cell => {
+                    const div = document.createElement('div');
+                    div.textContent = cell;
+                    container.appendChild(div);
+                });
+            });
+        }
+
+        fetchData()
+            .then(data => populateLeaderboard(data))
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
