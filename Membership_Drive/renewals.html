@@ -466,6 +466,17 @@
             }
         }
 
+        #payment-section img {
+        width: 300px; /* Default width for larger screens */
+        }
+    
+        /* Responsive styling for mobile */
+        @media (max-width: 768px) {
+            #payment-section img {
+                width: 200px; /* Reduced width for smaller screens */
+            }
+        }
+
         @media (max-width: 768px) {
             li {
                 font-size: 14px; /* Reduce font size */
@@ -696,7 +707,7 @@
         <div id="payment-section" style="display: none;">
             <h3>Payment</h3>
             <p>Scan the QR code to pay.</p>
-            <img src="images/qr_code.png" alt="QR Code" style="width: 300px;">
+            <img src="images/qr_code.png" alt="QR Code">
             <div class="form-group">
                 <label for="utr">UTR Number:</label>
                 <input type="text" id="utr">
