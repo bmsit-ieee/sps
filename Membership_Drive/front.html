@@ -12,35 +12,50 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: black;
+            background-color: #000;
+            overflow: hidden;
             color: white;
             font-family: Arial, sans-serif;
         }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Ensure it's set appropriately */
+        }
+
         .container {
             padding: 20px;
-            border: 3px solid white; /* Default border color */
+            border: 3px solid white;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
             align-items: center;
+            z-index: 1; /* Ensure the container appears above the background */
         }
+
         h1 {
             margin: 20px 0;
         }
-        /* Responsive styling for mobile */
+
         @media (max-width: 768px) {
             h1 {
-                margin: 10px 0; /* Adjust margin for smaller screens */
-                text-align: center; /* Center align text */
-                font-size: 1.5rem; /* Reduce font size */
+                margin: 10px 0;
+                text-align: center;
+                font-size: 1.5rem;
             }
         }
+
         .options {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
+
         .option {
             padding: 15px 30px;
             border: 2px solid white;
@@ -49,10 +64,12 @@
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .option:hover {
             background-color: white;
             color: black;
         }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -60,6 +77,8 @@
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+
     <div class="container">
         <img src="images/STB_Logo.png" alt="IEEE Logo" style="max-width: 300px;">
         <h1>IEEE MEMBERSHIP DRIVE</h1>
@@ -72,5 +91,94 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.6,
+                    "width": 1.5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 150,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
