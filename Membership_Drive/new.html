@@ -859,12 +859,11 @@
                 societies: societyData,
                 total: totalWithGst.toFixed(2), // Use the recalculated total
                 utr
-                
             };
         
             console.log('Submitting data:', data);
         
-            const scriptURL = "https://script.google.com/macros/s/AKfycby_lOP0tU-iTAG_EO-AZUTUatRJ3kthqKzCf7EWWaAB0GkTb7H9Gk_9iWKIgqmtfHSliQ/exec";
+            const scriptURL = "https://script.google.com/macros/s/AKfycbwrXvadpbaoh6GkKvirWCYxEcC959idNkbBgbDOwRXAFMjGoDyR0aiXD1VhoA4YoJ4DQg/exec";
             try {
                 await fetch(scriptURL, {
                     method: "POST",
